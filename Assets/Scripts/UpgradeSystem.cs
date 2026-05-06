@@ -10,7 +10,8 @@ public class UpgradeSystem : MonoBehaviour
         "Enemy Multiplier",
         "Score Multiplier",
         "Jump Height",
-        "Luck"
+        "Luck",
+        "Air Evade"
     };
 
     [Header("UI Options")]
@@ -21,6 +22,7 @@ public class UpgradeSystem : MonoBehaviour
     [Header("Scene References")]
     public GameObject Menu;
     public CharacterMovement player;
+    public bool debugUpgradeKey = true;
 
     public static int scoreMultiplier = 1;
 
@@ -40,6 +42,11 @@ public class UpgradeSystem : MonoBehaviour
     void Update()
     {
         ApplyUpgrades();
+
+        if (debugUpgradeKey && Input.GetKeyDown(KeyCode.U))
+        {
+            Upgrade();
+        }
     }
 
     // =========================
@@ -55,6 +62,7 @@ public class UpgradeSystem : MonoBehaviour
 
         if (scoreUpgrade)
             scoreMultiplier = 2;
+
     }
 
     // =========================
@@ -124,6 +132,10 @@ public class UpgradeSystem : MonoBehaviour
         else if (type == "Luck")
         {
             Debug.Log("not implemented yet");
+        }
+        else if (type == "Air Evade")
+        {
+            player.airEvadeUnlocked = true;
         }
     }
 
