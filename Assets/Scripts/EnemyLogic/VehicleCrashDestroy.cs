@@ -5,7 +5,7 @@ using UnityEngine;
 public class VehicleCrashDestroy : MonoBehaviour
 {
     [Header("Spawn Protection")]
-    public float spawnInvincibilityTime = 1.5f;
+    public float spawnInvincibilityTime = 0f;
 
     private float spawnTime;
     public ScoringSystem scoreSystem;
@@ -38,6 +38,7 @@ public class VehicleCrashDestroy : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") ||
             collision.transform.root.CompareTag("Player"))
         {
+            Debug.Log("Player collision");
             PlayerLife playerLife = collision.transform.root.GetComponent<PlayerLife>();
 
             if (playerLife != null)

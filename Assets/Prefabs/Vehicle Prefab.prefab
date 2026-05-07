@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VehicleAI_TunnelVision
   player: {fileID: 7848790198472329388, guid: 0894eb49ecec6384cad22c39f058c50e, type: 3}
-  moveSpeed: 8
-  turnSpeed: 60
+  moveSpeed: 5
+  turnSpeed: 90
 --- !u!114 &6465358753883134780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +185,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 5a4f86d32435a4c4ca96a487a3a32b8a, type: 3}
       propertyPath: m_Name
       value: Car 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 5a4f86d32435a4c4ca96a487a3a32b8a, type: 3}
+      propertyPath: m_TagString
+      value: Vehicle
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a4f86d32435a4c4ca96a487a3a32b8a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -256,7 +260,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: fc506dc8fe1cb4b83a87d0a92a1ef5ba, type: 2}
     - target: {fileID: 6400000, guid: 5a4f86d32435a4c4ca96a487a3a32b8a, type: 3}
       propertyPath: m_Convex
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6400000, guid: 5a4f86d32435a4c4ca96a487a3a32b8a, type: 3}
       propertyPath: m_IsTrigger

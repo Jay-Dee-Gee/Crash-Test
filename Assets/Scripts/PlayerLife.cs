@@ -17,6 +17,9 @@ public class PlayerLife : MonoBehaviour
 
         // For now, just disable the player.
         // Later, replace this with game over logic.
+        Debug.Break();
+        Application.Quit();
         gameObject.SetActive(false);
+        
     }
 }

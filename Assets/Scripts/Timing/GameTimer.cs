@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameTimer : MonoBehaviour
 {
@@ -50,6 +51,17 @@ public class GameTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        isKill();
+    }
+
+    // if the current elapsed time of the game exceeds 5 minutes kill the application
+    private void isKill()
+    {
+        if(Instance.ElapsedTime >= 300.0)
+        {
+            Debug.Log($"Game Over: Elapsed Time ${Instance.ElapsedTime}");
+            Debug.Break();
+            Application.Quit();
+        }
     }
 }
