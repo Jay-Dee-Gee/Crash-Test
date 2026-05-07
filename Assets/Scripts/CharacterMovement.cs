@@ -26,7 +26,7 @@ public class CharacterMovement : MonoBehaviour
     public float evadeDistance = 5f;
     public float evadeDuration = 0.2f;
     public float evadeCooldown = 1f;
-
+    public bool airEvadeUnlocked = false;
     private CharacterController controller;
 
     private float verticalVelocity;
@@ -95,9 +95,6 @@ public class CharacterMovement : MonoBehaviour
         if (isEvading || evadeCooldownTimer > 0f)
             return;
 
-        if (!grounded)
-            return;
-
         float h = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -115,6 +112,9 @@ public class CharacterMovement : MonoBehaviour
 
     void StartEvade(int direction)
     {
+        if (!grounded && !airEvadeUnlocked)
+            return;
+
         isEvading = true;
         evadeTimer = evadeDuration;
         evadeCooldownTimer = evadeCooldown;
@@ -122,8 +122,14 @@ public class CharacterMovement : MonoBehaviour
         Vector3 right = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0) * Vector3.right;
         evadeDirection = right * direction;
 
-        animator.SetTrigger(direction == -1 ? "EvadeLeft" : "EvadeRight");
-
+        if (grounded)
+        {
+            animator.SetTrigger(direction == -1 ? "EvadeLeft" : "EvadeRight");
+        }
+        else
+        {
+            animator.SetTrigger(direction == -1 ? "AirEvadeLeft" : "AirEvadeRight");
+        }
 
         playerSounds?.PlayEvade();
     }
